@@ -10,29 +10,29 @@
 flowchart TD
     USER(["👤 User Interest\nTopic · Goal · Platforms"])
 
-    PLANNER["🧠 Planner Agent\n──────────────────\nSets content goal\nGenerates search queries\nSelects target platforms\nOrchestrates workflow\n⛔ Never generates content"]
+    PLANNER["🧠 Planner Agent \n Sets content goal\nGenerates search queries\nSelects target platforms\nOrchestrates workflow\n⛔ Never generates content"]
 
-    SEARCH["🔍 Web Search Agent\n──────────────────\nFetches web pages + images\nReturns raw data only\n⛔ No summarization · No opinions"]
+    SEARCH["🔍 Web Search Agent \n Fetches web pages + images\nReturns raw data only\n⛔ No summarization · No opinions"]
 
-    RESEARCH["📚 Research Agent\n──────────────────\nReads raw data\nIdentifies factual statements\nRemoves noise & duplicates\nFilters by relevance"]
+    RESEARCH["📚 Research Agent \n Reads raw data\nIdentifies factual statements\nRemoves noise & duplicates\nFilters by relevance"]
 
-    CLAIMS[["🔗 Claim Structuring Agent\n──────────────────\nConverts research → atomic claims\nExtracts numbers · entities · dates\nAttaches source references\nRejects unsupported statements\n★ ONLY output allowed to reach Writer"]]
+    CLAIMS[["🔗 Claim Structuring Agent \n Converts research → atomic claims\nExtracts numbers · entities · dates\nAttaches source references\nRejects unsupported statements\n★ ONLY output allowed to reach Writer"]]
 
-    CREATOR["🎨 Content Creator Agent\n──────────────────\nDecides format: thread / post / carousel\nOrders claims logically\nDesigns narrative flow\n⛔ No text writing"]
+    CREATOR["🎨 Content Creator Agent \n Decides format: thread / post / carousel\nOrders claims logically\nDesigns narrative flow\n⛔ No text writing"]
 
-    WRITER["✍️ Writer Agent\n──────────────────\nConverts claims → readable copy\nAdapts tone to platform\n⛔ No internet access\n⛔ No new facts · No inferences"]
+    WRITER["✍️ Writer Agent \n Converts claims → readable copy\nAdapts tone to platform\n⛔ No internet access\n⛔ No new facts · No inferences"]
 
-    VERIFIER{"🛡️ Verifier Agent\n──────────────────\nCompares draft vs claims\nDetects hallucinations\nDetects altered numbers/dates\nChecks logical consistency"}
+    VERIFIER{"🛡️ Verifier Agent \n Compares draft vs claims\nDetects hallucinations\nDetects altered numbers/dates\nChecks logical consistency"}
 
-    SAFETY["🔐 Safety Check\n──────────────────\nHarmful guidance\nSensitive topics\nUnsafe advice\n⚡ Overrides ALL agents"]
+    SAFETY["🔐 Safety Check \n Harmful guidance\nSensitive topics\nUnsafe advice\n⚡ Overrides ALL agents"]
 
-    HUMAN(["👁 Human-in-Loop\n──────────────────\nTriggered on ambiguity\nor medium confidence\nApprove or Reject only\n⛔ No rewriting"])
+    HUMAN(["👁 Human-in-Loop \n Triggered on ambiguity\nor medium confidence\nApprove or Reject only\n⛔ No rewriting"])
 
     STOP(["🚫 STOP\nPublishing blocked"])
 
-    PUBLISHER["🚀 Publisher / Scheduler\n──────────────────\nFormats per platform\nPublishes or schedules\nReturns status\n⛔ No reasoning · No modification"]
+    PUBLISHER["🚀 Publisher / Scheduler \n Formats per platform\nPublishes or schedules\nReturns status\n⛔ No reasoning · No modification"]
 
-    LEARN["📈 Learnable Agent\n──────────────────\nObserves performance metrics\nIdentifies successful patterns\nRecommends better strategies\n⛔ Never edits existing posts"]
+    LEARN["📈 Learnable Agent \n Observes performance metrics\nIdentifies successful patterns\nRecommends better strategies\n⛔ Never edits existing posts"]
 
     %% Main pipeline
     USER -->|"intent signal"| PLANNER
