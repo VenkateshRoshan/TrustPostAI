@@ -8,31 +8,31 @@
 
 ```mermaid
 flowchart TD
-    USER(["👤 User Interest\nTopic · Goal · Platforms"])
+    USER(["👤 User Interest ( Topic · Goal · Platforms )"])
 
-    PLANNER["🧠 Planner Agent \n Sets content goal\nGenerates search queries\nSelects target platforms\nOrchestrates workflow\n⛔ Never generates content"]
+    PLANNER["🧠 Planner Agent"]
 
-    SEARCH["🔍 Web Search Agent \n Fetches web pages + images\nReturns raw data only\n⛔ No summarization · No opinions"]
+    SEARCH["🔍 Web Search Agent"]
 
-    RESEARCH["📚 Research Agent \n Reads raw data\nIdentifies factual statements\nRemoves noise & duplicates\nFilters by relevance"]
+    RESEARCH["📚 Research Agent"]
 
-    CLAIMS[["🔗 Claim Structuring Agent \n Converts research → atomic claims\nExtracts numbers · entities · dates\nAttaches source references\nRejects unsupported statements\n★ ONLY output allowed to reach Writer"]]
+    CLAIMS[["🔗 Claim Structuring Agent"]]
 
-    CREATOR["🎨 Content Creator Agent \n Decides format: thread / post / carousel\nOrders claims logically\nDesigns narrative flow\n⛔ No text writing"]
+    CREATOR["🎨 Content Creator Agent"]
 
-    WRITER["✍️ Writer Agent \n Converts claims → readable copy\nAdapts tone to platform\n⛔ No internet access\n⛔ No new facts · No inferences"]
+    WRITER["✍️ Writer Agent"]
 
-    VERIFIER{"🛡️ Verifier Agent \n Compares draft vs claims\nDetects hallucinations\nDetects altered numbers/dates\nChecks logical consistency"}
+    VERIFIER{"🛡️ Verifier Agent"}
 
-    SAFETY["🔐 Safety Check \n Harmful guidance\nSensitive topics\nUnsafe advice\n⚡ Overrides ALL agents"]
+    SAFETY["🔐 Safety Check"]
 
-    HUMAN(["👁 Human-in-Loop \n Triggered on ambiguity\nor medium confidence\nApprove or Reject only\n⛔ No rewriting"])
+    HUMAN(["👁 Human-in-Loop"])
 
-    STOP(["🚫 STOP\nPublishing blocked"])
+    STOP(["🚫 STOP Publishing blocked"])
 
-    PUBLISHER["🚀 Publisher / Scheduler \n Formats per platform\nPublishes or schedules\nReturns status\n⛔ No reasoning · No modification"]
+    PUBLISHER["🚀 Publisher / Scheduler"]
 
-    LEARN["📈 Learnable Agent \n Observes performance metrics\nIdentifies successful patterns\nRecommends better strategies\n⛔ Never edits existing posts"]
+    LEARN["📈 Learnable Agent"]
 
     %% Main pipeline
     USER -->|"intent signal"| PLANNER
