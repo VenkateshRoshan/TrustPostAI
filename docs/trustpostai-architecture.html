@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustPostAI — Excalidraw Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fafaf8;
+    font-family: 'Caveat', cursive;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px 60px;
+  }
+
+  svg {
+    width: 100%;
+    max-width: 860px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.04));
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 860 2200" xmlns="http://www.w3.org/2000/svg" font-family="Caveat, cursive">
+
+  <!-- Background paper texture hint -->
+  <rect width="860" height="2200" fill="#fafaf8"/>
+
+  <!-- ===== TITLE ===== -->
+  <text x="430" y="48" text-anchor="middle" font-size="30" font-weight="700" fill="#1a1a1a">TrustPostAI — System Architecture</text>
+  <text x="430" y="72" text-anchor="middle" font-size="17" fill="#888">Credibility-first multi-agent publishing pipeline</text>
+
+  <!-- ===== INFO FLOW BAR ===== -->
+  <rect x="60" y="90" width="740" height="36" rx="6" fill="#fff8e1" stroke="#e0c060" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <text x="430" y="113" text-anchor="middle" font-size="15" fill="#b07d10">
+    Raw Data → Structured Facts → Content Structure → Writing → Verification → Publish
+  </text>
+
+  <!-- ========== HELPER DEFS ========== -->
+  <defs>
+    <!-- Rough-edge filter for sketch feel -->
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#555"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#ef4444"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== -->
+  <!-- NODE MACRO (manual)   -->
+  <!-- ===================== -->
+
+  <!-- ====== 1. USER INPUT ====== -->
+  <rect x="280" y="148" width="300" height="58" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="2.2" filter="url(#rough)"/>
+  <text x="430" y="173" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1a1a">👤 User Interest</text>
+  <text x="430" y="194" text-anchor="middle" font-size="14" fill="#666">Topic · Goal · Platforms</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="206" x2="430" y2="248" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="233" font-size="13" fill="#999">intent</text>
+
+  <!-- ====== 2. PLANNER ====== -->
+  <rect x="230" y="248" width="400" height="72" rx="8" fill="#fffde7" stroke="#f59e0b" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="275" font-size="19" font-weight="700" fill="#1a1a1a">🧠 Planner Agent</text>
+  <text x="246" y="296" font-size="13" fill="#777">Sets goal · Generates queries · Selects platforms</text>
+  <text x="246" y="312" font-size="13" fill="#777">Orchestrates all agents · Never generates content</text>
+  <!-- Agent label pill -->
+  <rect x="548" y="260" width="70" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="583" y="274" text-anchor="middle" font-size="12" fill="#92400e">Controller</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="320" x2="430" y2="362" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="347" font-size="13" fill="#999">search queries</text>
+
+  <!-- ====== 3. WEB SEARCH ====== -->
+  <rect x="230" y="362" width="400" height="72" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="389" font-size="19" font-weight="700" fill="#1a1a1a">🔍 Web Search Agent</text>
+  <text x="246" y="410" font-size="13" fill="#777">Fetches web pages + images</text>
+  <text x="246" y="426" font-size="13" fill="#d97706">⚠ No summarization · No opinions · Raw data only</text>
+  <rect x="548" y="374" width="70" height="20" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="583" y="388" text-anchor="middle" font-size="12" fill="#1d4ed8">Tool Agent</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="434" x2="430" y2="476" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="461" font-size="13" fill="#999">raw data</text>
+
+  <!-- ====== 4. RESEARCH ====== -->
+  <rect x="230" y="476" width="400" height="72" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="503" font-size="19" font-weight="700" fill="#1a1a1a">📚 Research Agent</text>
+  <text x="246" y="524" font-size="13" fill="#777">Reads raw data · Identifies facts · Removes noise</text>
+  <text x="246" y="540" font-size="13" fill="#777">Filters by relevance — no final claims yet</text>
+  <rect x="548" y="488" width="70" height="20" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="583" y="502" text-anchor="middle" font-size="12" fill="#5b21b6">Agent</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="548" x2="430" y2="590" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="575" font-size="13" fill="#999">clean knowledge</text>
+
+  <!-- ====== 5. CLAIM STRUCTURING ====== -->
+  <rect x="200" y="590" width="460" height="84" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="2.8" filter="url(#rough)"/>
+  <!-- "Truth Gate" star/highlight -->
+  <text x="340" y="619" font-size="19" font-weight="700" fill="#1a1a1a">🔗 Claim Structuring Agent</text>
+  <text x="216" y="641" font-size="13" fill="#777">Converts research → atomic claims · Extracts numbers,</text>
+  <text x="216" y="657" font-size="13" fill="#777">entities, dates · Attaches sources · Rejects unsupported</text>
+  <text x="216" y="668" font-size="12" fill="#ef4444">★ Only output allowed to reach Writer</text>
+  <rect x="544" y="600" width="104" height="20" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="596" y="614" text-anchor="middle" font-size="12" fill="#92400e">Truth Boundary</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="674" x2="430" y2="716" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="701" font-size="13" fill="#999">sourced claims</text>
+
+  <!-- ====== 6. CONTENT CREATOR ====== -->
+  <rect x="230" y="716" width="400" height="72" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="743" font-size="19" font-weight="700" fill="#1a1a1a">🎨 Content Creator Agent</text>
+  <text x="246" y="764" font-size="13" fill="#777">Decides format (thread/post/carousel)</text>
+  <text x="246" y="780" font-size="13" fill="#777">Orders claims · Designs narrative flow · No writing</text>
+  <rect x="548" y="728" width="70" height="20" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="583" y="742" text-anchor="middle" font-size="12" fill="#166534">Designer</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="788" x2="430" y2="830" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="815" font-size="13" fill="#999">blueprint</text>
+
+  <!-- ====== 7. WRITER ====== -->
+  <rect x="230" y="830" width="400" height="84" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="857" font-size="19" font-weight="700" fill="#1a1a1a">✍️ Writer Agent</text>
+  <text x="246" y="878" font-size="13" fill="#777">Converts claims → readable copy · Adapts tone</text>
+  <text x="246" y="894" font-size="13" fill="#ef4444">✗ No internet · ✗ No new facts · ✗ No inferences</text>
+  <text x="246" y="908" font-size="12" fill="#ef4444">Must only use provided claims</text>
+  <rect x="548" y="842" width="70" height="20" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="583" y="856" text-anchor="middle" font-size="12" fill="#155e75">Writer</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="914" x2="430" y2="956" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="941" font-size="13" fill="#999">draft content</text>
+
+  <!-- ====== 8. VERIFIER (wide) ====== -->
+  <rect x="130" y="956" width="600" height="96" rx="8" fill="#fff1f2" stroke="#ef4444" stroke-width="2.8" filter="url(#rough)"/>
+  <text x="280" y="984" font-size="19" font-weight="700" fill="#1a1a1a">🛡️ Verifier Agent</text>
+  <text x="146" y="1006" font-size="13" fill="#777">Compares draft vs claims · Detects hallucinations</text>
+  <text x="146" y="1022" font-size="13" fill="#777">Detects altered numbers/dates · Logical consistency</text>
+  <!-- Verifier outputs -->
+  <rect x="146" y="1034" width="100" height="22" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="196" y="1049" text-anchor="middle" font-size="13" fill="#065f46">✓ Verified</text>
+  <rect x="256" y="1034" width="120" height="22" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="316" y="1049" text-anchor="middle" font-size="13" fill="#92400e">⚠ Needs Review</text>
+  <rect x="386" y="1034" width="100" height="22" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="436" y="1049" text-anchor="middle" font-size="13" fill="#991b1b">✗ Blocked</text>
+  <!-- Guard label -->
+  <rect x="638" y="968" width="80" height="20" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="678" y="982" text-anchor="middle" font-size="12" fill="#991b1b">Guard Layer</text>
+
+  <!-- Safety Check (side box) -->
+  <rect x="560" y="1000" width="170" height="46" rx="6" fill="#fff" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <text x="645" y="1020" text-anchor="middle" font-size="15" font-weight="700" fill="#1a1a1a">🔐 Safety Check</text>
+  <text x="645" y="1038" text-anchor="middle" font-size="12" fill="#ef4444">Overrides all agents</text>
+
+  <!-- ====== BLOCKED branch ====== -->
+  <!-- Blocked → STOP -->
+  <line x1="436" y1="1056" x2="436" y2="1090" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)" stroke-dasharray="4,3"/>
+  <!-- Stop sign box -->
+  <rect x="376" y="1090" width="120" height="34" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="436" y="1112" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">🚫 STOP — No Publish</text>
+
+  <!-- ====== Human-in-Loop (side) ====== -->
+  <!-- Line from "Needs Review" out to right -->
+  <line x1="730" y1="1002" x2="790" y2="1002" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="790" y1="1002" x2="790" y2="1100" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="795" y="1060" font-size="13" fill="#f97316">if ambiguous</text>
+
+  <rect x="680" y="1100" width="170" height="72" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="2" filter="url(#rough)"/>
+  <text x="765" y="1123" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">👁 Human Review</text>
+  <text x="765" y="1143" text-anchor="middle" font-size="12" fill="#777">Approve or Reject only</text>
+  <text x="765" y="1160" text-anchor="middle" font-size="12" fill="#777">No rewriting allowed</text>
+
+  <!-- Human → back to pipeline -->
+  <line x1="680" y1="1136" x2="600" y2="1136" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="625" y="1128" font-size="12" fill="#f97316">approved</text>
+
+  <!-- ====== Arrow: Verified → Publisher ====== -->
+  <line x1="430" y1="1052" x2="430" y2="1150" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="1110" font-size="13" fill="#999">verified content</text>
+
+  <!-- ====== 9. PUBLISHER ====== -->
+  <rect x="230" y="1150" width="400" height="72" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="1177" font-size="19" font-weight="700" fill="#1a1a1a">🚀 Publisher / Scheduler</text>
+  <text x="246" y="1198" font-size="13" fill="#777">Formats per platform · Publishes or schedules</text>
+  <text x="246" y="1214" font-size="13" fill="#ef4444">✗ No reasoning · ✗ No modification allowed</text>
+  <rect x="548" y="1162" width="70" height="20" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="583" y="1176" text-anchor="middle" font-size="12" fill="#166534">Executor</text>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="1222" x2="430" y2="1264" stroke="#555" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="445" y="1249" font-size="13" fill="#999">metrics</text>
+
+  <!-- ====== 10. LEARNABLE ====== -->
+  <rect x="230" y="1264" width="400" height="72" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="2.4" filter="url(#rough)"/>
+  <text x="340" y="1291" font-size="19" font-weight="700" fill="#1a1a1a">📈 Learnable Agent</text>
+  <text x="246" y="1312" font-size="13" fill="#777">Observes performance · Identifies patterns</text>
+  <text x="246" y="1328" font-size="13" fill="#777">Recommends strategy · Never edits posts</text>
+  <rect x="548" y="1276" width="70" height="20" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+  <text x="583" y="1290" text-anchor="middle" font-size="12" fill="#6b21a8">Learnable</text>
+
+  <!-- ====== FEEDBACK LOOP: Learnable → Planner ====== -->
+  <!-- Curved path going left and up back to Planner -->
+  <path d="M230,1300 Q80,1300 80,284 Q80,284 230,284" fill="none" stroke="#9333ea" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrow-purple)"/>
+  <text x="50" y="800" font-size="14" fill="#9333ea" transform="rotate(-90,50,800)">feedback loop → Planner</text>
+
+  <!-- ====== STRICT RULES BOX ====== -->
+  <rect x="130" y="1380" width="600" height="190" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="7,4" filter="url(#rough)"/>
+  <text x="430" y="1408" text-anchor="middle" font-size="19" font-weight="700" fill="#1a1a1a">📋 Strict System Rules</text>
+
+  <line x1="146" y1="1418" x2="714" y2="1418" stroke="#ddd" stroke-width="1.5"/>
+
+  <text x="160" y="1440" font-size="15" fill="#ef4444">R1</text>
+  <text x="185" y="1440" font-size="15" fill="#444">Writer cannot access the internet</text>
+
+  <text x="160" y="1462" font-size="15" fill="#ef4444">R2</text>
+  <text x="185" y="1462" font-size="15" fill="#444">Writer cannot access research directly</text>
+
+  <text x="160" y="1484" font-size="15" fill="#ef4444">R3</text>
+  <text x="185" y="1484" font-size="15" fill="#444">Only structured claims may reach the Writer</text>
+
+  <text x="160" y="1506" font-size="15" fill="#ef4444">R4</text>
+  <text x="185" y="1506" font-size="15" fill="#444">Verification is mandatory before publishing</text>
+
+  <text x="160" y="1528" font-size="15" fill="#ef4444">R5</text>
+  <text x="185" y="1528" font-size="15" fill="#444">Verification failure → publishing stops immediately</text>
+
+  <text x="160" y="1550" font-size="15" fill="#ef4444">R6</text>
+  <text x="185" y="1550" font-size="15" fill="#444">Safety checks override all other agents</text>
+
+</svg>
+</body>
+</html>
