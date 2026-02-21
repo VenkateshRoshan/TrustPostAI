@@ -1,0 +1,14 @@
+# add pyclean, .env, and .venv to .gitignore
+.pyclean
+.env
+.venv
+pycache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.DS_Store
+.idea/
+.vscode/
